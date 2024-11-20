@@ -34,6 +34,7 @@ import {
 } from "lucide-react"
 import { PersonIcon, ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons"
 import Image from 'next/image'
+import Link from 'next/link'
 
 // Custom components for both diagrams
 const CustomGroup: React.FC<{ data: { width: number; height: number } }> = ({ data }) => (
@@ -710,8 +711,9 @@ const newsItems: NewsItem[] = [
   },
   {
     id: 2,
-    image: "/images/news/news2.jpg",
-    title: "福岡県福岡市"
+    image: "/images/news/image_FCR.png",
+    title: "FC琉球の新ファンプラットフォーム「FCR COIN」にPrex採用",
+    link: "/news/fc-ryukyu-partnership"
   },
   {
     id: 3,
@@ -868,6 +870,7 @@ const TeamMember: React.FC<{
 
 export function TelihaLandingPageComponent() {
   const [isMounted, setIsMounted] = useState(false)
+  
 
   useEffect(() => {
     setIsMounted(true)
@@ -894,6 +897,20 @@ export function TelihaLandingPageComponent() {
             <span className="text-xl font-light tracking-wide font-inter">TELIHA</span>
             <span className="text-sm bg-white/10 px-2 py-1 rounded-md">∞.1</span>
           </div>
+          <nav>
+            <ul className="flex items-center justify-center space-x-6">
+              <li>
+                <Link 
+                  href="/news" 
+                  className="text-lg font-medium hover:text-gray-600 transition-colors flex items-center gap-2"
+                >
+                  <FileText className="w-4 h-4" />
+                  <span>News</span>
+                  <span className="text-sm">(11月22日Updated)</span>
+                </Link>
+              </li>
+            </ul>
+          </nav>
         </div>
       </header>
       <main className="flex-grow">
