@@ -200,7 +200,7 @@ export default function FCRyukyuPartnershipAnnouncement() {
                 <dl className="space-y-2">
                   <div>
                     <dt className="text-gray-600">所在地</dt>
-                    <dd>〒810-0041 福岡県福岡市</dd>
+                    <dd>福岡県福岡市</dd>
                   </div>
                   <div>
                     <dt className="text-gray-600">設立</dt>
