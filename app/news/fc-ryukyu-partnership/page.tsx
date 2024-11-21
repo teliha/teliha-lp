@@ -168,7 +168,7 @@ export default function FCRyukyuPartnershipAnnouncement() {
           </section>
 
           {/* 各社コメント */}
-          {/* <section className="mb-12">
+          /* <section className="mb-12">
             <h2 className="text-3xl font-bold mb-6">各社コメント</h2>
             <div className="space-y-6">
               <div className="bg-gray-50 p-8 rounded-lg">
@@ -185,11 +185,11 @@ export default function FCRyukyuPartnershipAnnouncement() {
                   Prexを利用することで、ブロックチェーン技術の複雑さが抽象化され、UI/フロントエンド開発が大幅に簡素化されました。これにより、開発期間を大幅に短縮することができ、より迅速にサービスを提供することが可能になりました。Prexは、ブロックチェーン技術を活用したアプリケーション開発の新たな可能性を開いたと言えるでしょう。
                 </p>
                 <p className="font-semibold text-right">
-                  - 面白法人カヤック フロントエンドエンジニア Okada Takuma
+                  - 面白法人カヤック すぱいす
                 </p>
               </div>
             </div>
-          </section> */}
+          </section> */
 
           {/* 会社概要 */}
           <section className="mb-12">
