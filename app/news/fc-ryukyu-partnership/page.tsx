@@ -168,7 +168,7 @@ export default function FCRyukyuPartnershipAnnouncement() {
           </section>
 
           {/* 各社コメント */}
-          <section className="mb-12">
+          {/* <section className="mb-12">
             <h2 className="text-3xl font-bold mb-6">各社コメント</h2>
             <div className="space-y-6">
               <div className="bg-gray-50 p-8 rounded-lg">
@@ -189,7 +189,7 @@ export default function FCRyukyuPartnershipAnnouncement() {
                 </p>
               </div>
             </div>
-          </section>
+          </section> */}
 
           {/* 会社概要 */}
           <section className="mb-12">
