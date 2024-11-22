@@ -46,7 +46,7 @@ export default function FCRyukyuPartnershipAnnouncement() {
             <h2 className="text-2xl font-bold mb-4">概要</h2>
             <p className="text-lg leading-relaxed">
               Teliha株式会社(以下、Teliha)は、同社のブロックチェーン技術を活用したサービス「Prex」が、
-              株式会社FC琉球(以下、FC琉球)の新サービス「FC琉球応援プラットフォーム FCR COIN」に採用されたことをお知らせいたします。
+              株式会社FC琉球(以下、FC琉球)の新サービス「FC琉球応援プラットフォーム FCR COIN.」に採用されたことをお知らせいたします。
               本サービスは、Prexの第一号採用事例となります。
             </p>
           </div>
@@ -117,12 +117,12 @@ export default function FCRyukyuPartnershipAnnouncement() {
             </div>
           </section>
 
-          {/* FC琉球応援プラットフォーム FCR COINについて */}
+          {/* FC琉球応援プラットフォーム FCR COIN.について */}
           <section className="mb-12">
-            <h2 className="text-3xl font-bold mb-6">FC琉球応援プラットフォーム FCR COINについて</h2>
+            <h2 className="text-3xl font-bold mb-6">FC琉球応援プラットフォーム FCR COIN.について</h2>
             <div className="bg-white p-6 rounded-lg border border-gray-200">
               <p className="mb-4">
-                「FC琉球応援プラットフォーム FCR COIN」は、面白法人カヤック社がUI/フロントエンド部分を担当し、
+                「FC琉球応援プラットフォーム FCR COIN.」は、面白法人カヤック社がUI/フロントエンド部分を担当し、
                 TelihaがバックエンドとしてPrexを提供する形で開発されました。FCRはイーサリアムで発行され、
                 Layer2にブリッジされてプラットフォーム上で利用されます。
               </p>
