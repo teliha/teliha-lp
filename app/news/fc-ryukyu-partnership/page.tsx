@@ -26,7 +26,7 @@ export default function FCRyukyuPartnershipAnnouncement() {
               <time className="text-gray-500">2024年11月22日</time>
             </div>
             <h1 className="text-4xl font-bold leading-tight mb-6">
-              Teliha株式会社のPrexサービス、FC琉球の新ファンプラットフォーム「FCR COIN」に採用
+              Teliha株式会社のPrexサービス、FC琉球の新ファンプラットフォーム「FCR COIN.」に採用
             </h1>
           </div>
 
