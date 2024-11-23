@@ -149,7 +149,7 @@ export default function FCRyukyuPartnershipAnnouncement() {
                 </li>
                 <li className="flex items-center">
                   <span className="flex-shrink-0 w-6 h-6 flex items-center justify-center bg-blue-600 text-white rounded-full mr-3">3</span>
-                  <span>FC琉球勝利時、全登録ユーザーに10,000FCRを付与</span>
+                  <span>FC琉球勝利時、登録ユーザー先着500人に10,000FCRを付与</span>
                 </li>
               </ul>
             </div>
