@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { Grid3X3, Play, X, Calendar, Home, Code, Users, Presentation, Newspaper, ExternalLink } from "lucide-react"
+import { Grid3X3, Play, X, Calendar, Home, Code, Users, Presentation, Newspaper } from "lucide-react"
 import { useLanguage } from "../../hooks/use-language"
 import { LanguageSwitcher } from "../../components/language-switcher"
 import { useMobile } from "../../hooks/use-mobile"
@@ -16,7 +16,6 @@ interface NewsItem {
   title: string
   description: string
   videoUrl?: string
-  externalLink?: string
 }
 
 export default function NewsPage() {
@@ -32,82 +31,16 @@ export default function NewsPage() {
   // サンプルニュースデータ
   const newsData: NewsItem[] = [
     {
-      id: "finopitch-2025",
+      id: "1",
       type: "image",
-      thumbnail: "/images/finopitch-2025.png",
-      date: "2025-02-05",
-      title:
-        language === "en"
-          ? "Teliha Selected as FINOPITCH 2025 Finalist"
-          : "FINOPITCH 2025のファイナリストに株式会社Telihaが選出",
+      thumbnail: "/placeholder.svg?height=300&width=300",
+      date: "2024-12-15",
+      title: language === "en" ? "FCRApp Stadium Launch" : "FCRAppスタジアムローンチ",
       description:
         language === "en"
-          ? "We are thrilled to announce that Teliha Limited has been selected as a finalist for FINOPITCH 2025! This prestigious recognition highlights our innovative approach to blockchain-based financial solutions and positions us among the most promising fintech companies in Japan."
-          : "FINOPITCH 2025のファイナリストに株式会社Telihaが選出されました！この栄誉ある選出は、ブロックチェーンベースの金融ソリューションに対する革新的なアプローチを評価いただき、日本で最も有望なフィンテック企業の一つとして認められたことを示しています。",
-      externalLink: "https://4f-otmcbldg.tokyo/2025-jp/",
+          ? "Successfully launched FCRApp at FC Ryukyu stadium with over 5,000 token distributions to fans during the match."
+          : "FC琉球スタジアムでFCRAppを成功裏にローンチ。試合中にファンに5,000以上のトークンを配布しました。",
     },
-    {
-      id: "fc-ryukyu-partnership",
-      type: "image",
-      thumbnail: "/images/fc-ryukyu-partnership.png",
-      date: "2024-11-28",
-      title: language === "en" ? "Prex Adopted by FC Ryukyu OKINAWA" : "PrexがFC琉球の新サービスに採用",
-      description:
-        language === "en"
-          ? "We are excited to announce that Prex has been adopted by FC Ryukyu OKINAWA for their new fan engagement platform 'FC Ryukyu Support Platform FCR COIN.' This partnership marks a significant milestone in bringing blockchain technology to sports fan engagement in Okinawa."
-          : "Prexが、琉球フットボールクラブ株式会社が運営するサッカークラブFC琉球OKINAWAの新サービス「FC琉球応援プラットフォーム FCR COIN.」に採用されたことをお知らせいたします！この提携により、沖縄のスポーツファンエンゲージメントにブロックチェーン技術をもたらす重要なマイルストーンとなります。",
-    },
-    {
-      id: "fact-of-web3-2023",
-      type: "image",
-      thumbnail: "/images/fact-of-web3-2023.png",
-      date: "2023-11-09",
-      title: language === "en" ? "Fact of Web3 Event in Fukuoka" : "「Fact of Web3」イベント開催",
-      description:
-        language === "en"
-          ? "Successfully hosted the 'Fact of Web3' event on November 9, 2023, from 13:00 to 16:00 in Fukuoka. The event featured prominent Web3 industry leaders and was held near the Ritz-Carlton, bringing together blockchain enthusiasts and developers to discuss the current state and future of Web3 technology."
-          : "2023年11月9日13時〜16時に福岡で「Fact of Web3」イベントを開催いたしました。リッツカールトン近くの会場で、Web3業界の著名なリーダーたちが集まり、ブロックチェーン愛好家や開発者とともにWeb3技術の現状と未来について議論しました。",
-    },
-    {
-      id: "ethglobal-tokyo-2023",
-      type: "image",
-      thumbnail: "/images/ethglobal-tokyo-2023.png",
-      date: "2023-04-14",
-      title: language === "en" ? "ETH Farm Wins Prize at ETHGlobal Tokyo 2023" : "ETHGlobal Tokyo 2023でETH Farmが受賞",
-      description:
-        language === "en"
-          ? "Our team won 'The Graph — Best use of Existing Subgraph' prize at ETHGlobal Tokyo 2023 hackathon with ETH Farm. This achievement demonstrates our early commitment to building innovative blockchain solutions and our expertise in decentralized technologies."
-          : "ETHGlobal Tokyo 2023のハッカソンで、ETH Farmプロダクトが「The Graph — Best use of Existing Subgraph」賞を受賞しました！この受賞は、革新的なブロックチェーンソリューション構築への早期からの取り組みと、分散化技術における専門性を示すものです。",
-      externalLink: "https://ethglobal.com/showcase/undefined-mc4u0",
-    },
-    {
-      id: "defi-conference-gmo-2023",
-      type: "image",
-      thumbnail: "/images/defi-conference-gmo-2023.png",
-      date: "2023-04-17",
-      title:
-        language === "en" ? "DeFi Innovative Conference in GMO Coin" : "DeFi Innovative Conference in GMO Coin開催",
-      description:
-        language === "en"
-          ? "Successfully hosted the DeFi Innovative Conference in GMO Coin on April 17, 2023, from 16:00 to 18:00. The event was held at GMO Yours in Shibuya, Tokyo, bringing together DeFi innovators and blockchain enthusiasts to discuss the future of decentralized finance."
-          : "2023年4月17日16時〜18時に「DeFi Innovative Conference in GMO Coin」を開催いたしました。東京・渋谷のGMO Yoursにて、DeFiイノベーターやブロックチェーン愛好家が集まり、分散型金融の未来について議論しました。",
-    },
-    {
-      id: "finolab-cbdc-contest",
-      type: "image",
-      thumbnail: "/images/finolab-cbdc-contest.png",
-      date: "2022-07-28",
-      title:
-        language === "en"
-          ? "FINOLAB CBDC Idea Contest Winner"
-          : "FINOLAB「中央銀行デジタル通貨（CBDC）アイデアコンテスト」入賞",
-      description:
-        language === "en"
-          ? "We are proud to announce that our team won the FINOLAB Central Bank Digital Currency (CBDC) Idea Contest! This achievement demonstrates our innovative approach to digital currency solutions and our commitment to advancing financial technology in Japan."
-          : "FINOLAB主催の「中央銀行デジタル通貨（CBDC）アイデアコンテスト」で入賞いたしました！この受賞は、デジタル通貨ソリューションに対する革新的なアプローチと、日本の金融技術発展への貢献を示すものです。",
-      externalLink: "https://prtimes.jp/main/html/rd/p/000000030.000049702.html",
-    },
-    // REELSは残す
     {
       id: "2",
       type: "reel",
@@ -119,6 +52,17 @@ export default function NewsPage() {
           ? "Watch how easy it is to integrate Prex SDK into your application with just a few lines of code."
           : "わずか数行のコードでPrex SDKをアプリケーションに統合する簡単さをご覧ください。",
       videoUrl: "https://example.com/prex-demo.mp4",
+    },
+    {
+      id: "3",
+      type: "image",
+      thumbnail: "/placeholder.svg?height=300&width=300",
+      date: "2024-12-05",
+      title: language === "en" ? "Team Development Sprint" : "チーム開発スプリント",
+      description:
+        language === "en"
+          ? "Our engineering team working on the next generation of blockchain infrastructure solutions."
+          : "次世代のブロックチェーンインフラソリューションに取り組むエンジニアリングチーム。",
     },
     {
       id: "4",
@@ -133,6 +77,28 @@ export default function NewsPage() {
       videoUrl: "https://example.com/gasless-demo.mp4",
     },
     {
+      id: "5",
+      type: "image",
+      thumbnail: "/placeholder.svg?height=300&width=300",
+      date: "2024-11-20",
+      title: language === "en" ? "Web3 Conference Presentation" : "Web3カンファレンス発表",
+      description:
+        language === "en"
+          ? "CEO Shuhei Hiya presenting Teliha's vision for programmable finance at Tokyo Web3 Summit."
+          : "CEO部谷修平が東京Web3サミットでTelihaのプログラマブルファイナンスビジョンを発表。",
+    },
+    {
+      id: "6",
+      type: "image",
+      thumbnail: "/placeholder.svg?height=300&width=300",
+      date: "2024-11-15",
+      title: language === "en" ? "New Office Setup" : "新オフィスセットアップ",
+      description:
+        language === "en"
+          ? "Our new development workspace in Fukuoka, equipped with cutting-edge technology for blockchain development."
+          : "ブロックチェーン開発のための最先端技術を備えた福岡の新しい開発ワークスペース。",
+    },
+    {
       id: "7",
       type: "reel",
       thumbnail: "/placeholder.svg?height=300&width=300",
@@ -143,6 +109,17 @@ export default function NewsPage() {
           ? "See how easy it is to distribute tokens using QR codes at events and retail locations."
           : "イベントや小売店でQRコードを使ってトークンを配布する簡単さをご覧ください。",
       videoUrl: "https://example.com/qr-distribution.mp4",
+    },
+    {
+      id: "8",
+      type: "image",
+      thumbnail: "/placeholder.svg?height=300&width=300",
+      date: "2024-11-01",
+      title: language === "en" ? "Strategic Partnership" : "戦略的パートナーシップ",
+      description:
+        language === "en"
+          ? "Announcing new strategic partnerships to expand our blockchain infrastructure across Asia."
+          : "アジア全域でブロックチェーンインフラを拡大するための新しい戦略的パートナーシップを発表。",
     },
     {
       id: "9",
@@ -356,7 +333,6 @@ export default function NewsPage() {
                   <Calendar size={12} className="text-cyan-400" />
                   <span className="text-xs text-white font-medium">
                     {new Date(item.date).toLocaleDateString(language === "en" ? "en-US" : "ja-JP", {
-                      year: "2-digit",
                       month: "short",
                       day: "numeric",
                     })}
@@ -423,24 +399,7 @@ export default function NewsPage() {
 
                   <h2 className="text-2xl font-bold text-white mb-4">{selectedItem.title}</h2>
 
-                  <p className="text-gray-300 leading-relaxed mb-4">{selectedItem.description}</p>
-
-                  {/* 外部リンクボタン */}
-                  {selectedItem.externalLink && (
-                    <div className="mb-4">
-                      <a
-                        href={selectedItem.externalLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center space-x-2 px-4 py-2 bg-cyan-400/10 border border-cyan-400/30 rounded-lg text-cyan-400 hover:bg-cyan-400/20 hover:border-cyan-400/50 transition-colors"
-                      >
-                        <span className="text-sm font-medium">
-                          {language === "en" ? "View Event Details" : "イベント詳細を見る"}
-                        </span>
-                        <ExternalLink size={14} />
-                      </a>
-                    </div>
-                  )}
+                  <p className="text-gray-300 leading-relaxed">{selectedItem.description}</p>
                 </div>
 
                 <div className="mt-6 pt-6 border-t border-white/10">
