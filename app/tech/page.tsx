@@ -11,9 +11,10 @@ import { MobileNavigation } from "../../components/mobile-navigation"
 export default function TechPage() {
   const { language } = useLanguage()
   const [homeHover, setHomeHover] = useState(false)
-  const [teamHover, setTeamHover] = useState(false)
+  const [techHover, setTechHover] = useState(false)
   const [deckHover, setDeckHover] = useState(false)
   const [newsHover, setNewsHover] = useState(false)
+  const [teamHover, setTeamHover] = useState(false) // Declare teamHover and setTeamHover
   const isMobile = useMobile()
 
   // 技術情報の定義
@@ -140,7 +141,7 @@ export default function TechPage() {
               >
                 <Home size={16} className={`${homeHover ? "text-cyan-400" : "text-white/70"} transition-colors`} />
                 <span
-                  className={`text-sm font-medium ${homeHover ? "text-cyan-400" : "text-white/70"} transition-colors`}
+                  className={`text-sm font-medium ${homeHover ? "text-cyan-400" : "text-white/70"} transition-colors whitespace-nowrap`}
                 >
                   {language === "en" ? "HOME" : "ホーム"}
                 </span>

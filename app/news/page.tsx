@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { Grid3X3, Play, X, Calendar, Home, Code, Users, Presentation, Newspaper, ExternalLink } from "lucide-react"
+import { Grid3X3, Play, X, Calendar, Home, Code, Users, Presentation, Newspaper } from "lucide-react"
 import { useLanguage } from "../../hooks/use-language"
 import { LanguageSwitcher } from "../../components/language-switcher"
 import { useMobile } from "../../hooks/use-mobile"
@@ -356,7 +356,6 @@ export default function NewsPage() {
                   <Calendar size={12} className="text-cyan-400" />
                   <span className="text-xs text-white font-medium">
                     {new Date(item.date).toLocaleDateString(language === "en" ? "en-US" : "ja-JP", {
-                      year: "2-digit",
                       month: "short",
                       day: "numeric",
                     })}
@@ -423,24 +422,7 @@ export default function NewsPage() {
 
                   <h2 className="text-2xl font-bold text-white mb-4">{selectedItem.title}</h2>
 
-                  <p className="text-gray-300 leading-relaxed mb-4">{selectedItem.description}</p>
-
-                  {/* 外部リンクボタン */}
-                  {selectedItem.externalLink && (
-                    <div className="mb-4">
-                      <a
-                        href={selectedItem.externalLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center space-x-2 px-4 py-2 bg-cyan-400/10 border border-cyan-400/30 rounded-lg text-cyan-400 hover:bg-cyan-400/20 hover:border-cyan-400/50 transition-colors"
-                      >
-                        <span className="text-sm font-medium">
-                          {language === "en" ? "View Event Details" : "イベント詳細を見る"}
-                        </span>
-                        <ExternalLink size={14} />
-                      </a>
-                    </div>
-                  )}
+                  <p className="text-gray-300 leading-relaxed">{selectedItem.description}</p>
                 </div>
 
                 <div className="mt-6 pt-6 border-t border-white/10">

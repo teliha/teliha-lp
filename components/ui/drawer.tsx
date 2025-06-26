@@ -1,118 +1,100 @@
 "use client"
 
 import * as React from "react"
-import { Drawer as DrawerPrimitive } from "vaul"
+import * as RadixDrawer from "@radix-ui/react-drawer"
+import { X } from "lucide-react" // Import the X component
 
 import { cn } from "@/lib/utils"
 
-const Drawer = ({
-  shouldScaleBackground = true,
-  ...props
-}: React.ComponentProps<typeof DrawerPrimitive.Root>) => (
-  <DrawerPrimitive.Root
-    shouldScaleBackground={shouldScaleBackground}
-    {...props}
-  />
-)
-Drawer.displayName = "Drawer"
+const Drawer = RadixDrawer.Root
 
-const DrawerTrigger = DrawerPrimitive.Trigger
+const DrawerTrigger = RadixDrawer.Trigger
 
-const DrawerPortal = DrawerPrimitive.Portal
+const DrawerClose = RadixDrawer.Close
 
-const DrawerClose = DrawerPrimitive.Close
+const DrawerPortal = RadixDrawer.Portal
 
 const DrawerOverlay = React.forwardRef<
-  React.ElementRef<typeof DrawerPrimitive.Overlay>,
-  React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Overlay>
+  React.ElementRef<typeof RadixDrawer.Overlay>,
+  React.ComponentPropsWithoutRef<typeof RadixDrawer.Overlay>
 >(({ className, ...props }, ref) => (
-  <DrawerPrimitive.Overlay
-    ref={ref}
-    className={cn("fixed inset-0 z-50 bg-black/80", className)}
-    {...props}
-  />
-))
-DrawerOverlay.displayName = DrawerPrimitive.Overlay.displayName
-
-const DrawerContent = React.forwardRef<
-  React.ElementRef<typeof DrawerPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Content>
->(({ className, children, ...props }, ref) => (
-  <DrawerPortal>
-    <DrawerOverlay />
-    <DrawerPrimitive.Content
-      ref={ref}
-      className={cn(
-        "fixed inset-x-0 bottom-0 z-50 mt-24 flex h-auto flex-col rounded-t-[10px] border bg-background",
-        className
-      )}
-      {...props}
-    >
-      <div className="mx-auto mt-4 h-2 w-[100px] rounded-full bg-muted" />
-      {children}
-    </DrawerPrimitive.Content>
-  </DrawerPortal>
-))
-DrawerContent.displayName = "DrawerContent"
-
-const DrawerHeader = ({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) => (
-  <div
-    className={cn("grid gap-1.5 p-4 text-center sm:text-left", className)}
-    {...props}
-  />
-)
-DrawerHeader.displayName = "DrawerHeader"
-
-const DrawerFooter = ({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) => (
-  <div
-    className={cn("mt-auto flex flex-col gap-2 p-4", className)}
-    {...props}
-  />
-)
-DrawerFooter.displayName = "DrawerFooter"
-
-const DrawerTitle = React.forwardRef<
-  React.ElementRef<typeof DrawerPrimitive.Title>,
-  React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Title>
->(({ className, ...props }, ref) => (
-  <DrawerPrimitive.Title
+  <RadixDrawer.Overlay
     ref={ref}
     className={cn(
-      "text-lg font-semibold leading-none tracking-tight",
-      className
+      "fixed inset-0 z-50 bg-black/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
+      className,
     )}
     {...props}
   />
 ))
-DrawerTitle.displayName = DrawerPrimitive.Title.displayName
+DrawerOverlay.displayName = RadixDrawer.Overlay.displayName
 
-const DrawerDescription = React.forwardRef<
-  React.ElementRef<typeof DrawerPrimitive.Description>,
-  React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Description>
+const DrawerContent = React.forwardRef<
+  React.ElementRef<typeof RadixDrawer.Content>,
+  React.ComponentPropsWithoutRef<typeof RadixDrawer.Content>
+>(({ className, children, side = "left", ...props }, ref) => (
+  <DrawerPortal>
+    <DrawerOverlay />
+    <RadixDrawer.Content
+      ref={ref}
+      className={cn(
+        "fixed z-50 flex flex-col gap-4 bg-background p-6 shadow-lg duration-300 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-right-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-right-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg",
+        side === "left" && "left-0 border-r data-[state=closed]:slide-out-to-left-full",
+        side === "right" && "right-0 border-l data-[state=closed]:slide-out-to-right-full",
+        side === "top" && "top-0 border-b data-[state=closed]:slide-out-to-top-full",
+        className,
+      )}
+      {...props}
+    >
+      {children}
+      <RadixDrawer.Close className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
+        <X className="h-4 w-4" />
+        <span className="sr-only">Close</span>
+      </RadixDrawer.Close>
+    </RadixDrawer.Content>
+  </DrawerPortal>
+))
+DrawerContent.displayName = RadixDrawer.Content.displayName
+
+const DrawerHeader = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
+  <div className={cn("flex flex-col space-y-1.5 text-center sm:text-left", className)} {...props} />
+)
+DrawerHeader.displayName = "DrawerHeader"
+
+const DrawerFooter = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
+  <div className={cn("flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2", className)} {...props} />
+)
+DrawerFooter.displayName = "DrawerFooter"
+
+const DrawerTitle = React.forwardRef<
+  React.ElementRef<typeof RadixDrawer.Title>,
+  React.ComponentPropsWithoutRef<typeof RadixDrawer.Title>
 >(({ className, ...props }, ref) => (
-  <DrawerPrimitive.Description
+  <RadixDrawer.Title
     ref={ref}
-    className={cn("text-sm text-muted-foreground", className)}
+    className={cn("text-lg font-semibold leading-none tracking-tight", className)}
     {...props}
   />
 ))
-DrawerDescription.displayName = DrawerPrimitive.Description.displayName
+DrawerTitle.displayName = RadixDrawer.Title.displayName
+
+const DrawerDescription = React.forwardRef<
+  React.ElementRef<typeof RadixDrawer.Description>,
+  React.ComponentPropsWithoutRef<typeof RadixDrawer.Description>
+>(({ className, ...props }, ref) => (
+  <RadixDrawer.Description ref={ref} className={cn("text-sm text-muted-foreground", className)} {...props} />
+))
+DrawerDescription.displayName = RadixDrawer.Description.displayName
 
 export {
   Drawer,
-  DrawerPortal,
-  DrawerOverlay,
   DrawerTrigger,
-  DrawerClose,
   DrawerContent,
   DrawerHeader,
   DrawerFooter,
   DrawerTitle,
   DrawerDescription,
+  DrawerClose,
+  DrawerOverlay,
+  DrawerPortal,
 }
